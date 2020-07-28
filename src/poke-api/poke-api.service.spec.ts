@@ -14,8 +14,8 @@ describe('PokeApiService', () => {
         PokeApiService,
         {
           provide: 'POKEDEX',
-          //useValue: new PokedexMock(),
-          useValue: new Pokedex(),
+          useValue: new PokedexMock(),
+          //useValue: new Pokedex(),
         },
       ],
     }).compile();
@@ -35,12 +35,14 @@ describe('PokeApiService', () => {
         { name: 'pikachu', species: 'pikachu' },
       ];
 
-      testCases.map(async test => {
-        const result = await service.getPokemon(test.name);
+      await Promise.all(
+        testCases.map(async test => {
+          const result = await service.getPokemon(test.name);
 
-        expect(result.name).toEqual(test.name);
-        expect(result.species.name).toEqual(test.species);
-      });
+          expect(result.name).toEqual(test.name);
+          expect(result.species.name).toEqual(test.species);
+        }),
+      );
     });
   });
 
@@ -52,36 +54,45 @@ describe('PokeApiService', () => {
         { name: 'pikachu', species: 'pikachu' },
       ];
 
-      testCases.map(async test => {
-        const result = await service.getSpecies(test.name);
+      await Promise.all(
+        testCases.map(async test => {
+          const result = await service.getSpecies(test.name);
 
-        //appendToFile('./example-get-species-results.json', result);
-
-        expect(result.name).toEqual(test.name);
-        expect(Array.isArray(result.flavor_text_entries)).toBe(true);
-
-        console.log(result);
-      });
+          expect(result.name).toEqual(test.name);
+          expect(Array.isArray(result.flavor_text_entries)).toBe(true);
+        }),
+      );
     });
   });
 
   describe('.getPokemonDescriptionByName', () => {
     it('Should get the description', async () => {
       const testCases = [
-        { name: 'charizard', species: 'charizard' },
-        // { name: 'bulbasaur', species: 'bulbasaur' },
-        // { name: 'pikachu', species: 'pikachu' },
+        {
+          name: 'charizard',
+          descriptionPartial: 'Spits fire that',
+        },
+        {
+          name: 'bulbasaur',
+          descriptionPartial: 'A strange seed was',
+        },
+        {
+          name: 'pikachu',
+          descriptionPartial: 'lightning storms',
+        },
       ];
 
-      testCases.map(async test => {
-        const result = await service.getPokemonDescriptionByName(test.name);
+      await Promise.all(
+        testCases.map(async test => {
+          const result = await service.getPokemonDescriptionByName(test.name);
 
-        console.log(result);
-      });
+          expect(result).toContain(test.descriptionPartial);
+        }),
+      );
     });
   });
 
-  describe('.getVersions', () => {
+  describe.skip('.getVersions', () => {
     it('Should get the versions', async () => {
       const result = await service.getVersions();
 

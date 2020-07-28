@@ -45,6 +45,3 @@ export class PokeApiService {
     }
   }
 }
-
-// REFACTOR
-enum POKEMON_VERSION {}
