@@ -10,5 +10,6 @@ import * as Pokedex from 'pokedex-promise-v2';
       useValue: new Pokedex(),
     },
   ],
+  exports: [PokeApiService],
 })
 export class PokeApiModule {}

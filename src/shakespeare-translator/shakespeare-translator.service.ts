@@ -12,7 +12,7 @@ export class ShakespeareTranslatorService {
 
   async translate(text: string): Promise<TranslationResponseDTO> {
     const url = `${this.configService.get(
-      'FUN_TRANSLATIONS_URL',
+      'FUN_TRANSLATIONS_BASE_URL',
     )}/translate/shakespeare.json?text=${JSON.stringify(text)}`;
 
     try {

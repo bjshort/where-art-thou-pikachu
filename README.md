@@ -7,3 +7,6 @@
 - hard code flavour text version for now, later on select from ui
 - add tests to handle api error codes, not found etc.
 - decide where to handle error codes, or let bubble up?
+- Add unit tests with mocks for pokemon service, don't overtest
+- e2e tests for pokemon controller
+- Want to refactor pokemon service so it can retrieve more info about species/pokemon, more logic up to pokemon service rather than having a 'getdescription' method in the pokeapi service
