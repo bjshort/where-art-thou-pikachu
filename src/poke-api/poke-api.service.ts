@@ -1,6 +1,7 @@
 import { Injectable, HttpService, Inject } from '@nestjs/common';
 import { PokemonSearchResultDTO } from './pokemon-search-result.dto';
 import { PokemonSpeciesSearchResultDTO } from './pokemon-species-search-result.dto';
+import { StringUtils } from '../utils/string-utils';
 
 @Injectable()
 export class PokeApiService {
@@ -15,7 +16,8 @@ export class PokeApiService {
       return entry.language.name === 'en';
     });
 
-    return entry.flavor_text;
+    // Remove all types of newline from string
+    return StringUtils.removeNewlines(entry.flavor_text);
   }
 
   async getPokemon(name: string): Promise<PokemonSearchResultDTO> {

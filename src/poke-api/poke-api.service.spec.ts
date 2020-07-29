@@ -70,15 +70,18 @@ describe('PokeApiService', () => {
       const testCases = [
         {
           name: 'charizard',
-          descriptionPartial: 'Spits fire that',
+          description:
+            'Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.',
         },
         {
           name: 'bulbasaur',
-          descriptionPartial: 'A strange seed was',
+          description:
+            'A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.',
         },
         {
           name: 'pikachu',
-          descriptionPartial: 'lightning storms',
+          description:
+            'When several of these POKéMON gather, their electricity could build and cause lightning storms.',
         },
       ];
 
@@ -86,7 +89,7 @@ describe('PokeApiService', () => {
         testCases.map(async test => {
           const result = await service.getPokemonDescriptionByName(test.name);
 
-          expect(result).toContain(test.descriptionPartial);
+          expect(result).toEqual(test.description);
         }),
       );
     });
