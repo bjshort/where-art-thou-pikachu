@@ -44,6 +44,18 @@ describe('PokeApiService', () => {
         }),
       );
     });
+
+    it('Should throw 404 if name is not an exact match or does not exist', async () => {
+      const testCases = ['charizar', 'ulbasaur', 'madeupachoo'];
+
+      await Promise.all(
+        testCases.map(async test => {
+          await expect(service.getPokemon(test)).rejects.toEqual(
+            new Error('Request failed with status code 404'),
+          );
+        }),
+      );
+    });
   });
 
   describe('.getSpecies', () => {
@@ -60,6 +72,18 @@ describe('PokeApiService', () => {
 
           expect(result.name).toEqual(test.name);
           expect(Array.isArray(result.flavor_text_entries)).toBe(true);
+        }),
+      );
+    });
+
+    it('Should throw 404 if name is not an exact match or does not exist', async () => {
+      const testCases = ['charizar', 'ulbasaur', 'madeupachoo'];
+
+      await Promise.all(
+        testCases.map(async test => {
+          await expect(service.getSpecies(test)).rejects.toEqual(
+            new Error('Request failed with status code 404'),
+          );
         }),
       );
     });
@@ -90,6 +114,18 @@ describe('PokeApiService', () => {
           const result = await service.getPokemonDescriptionByName(test.name);
 
           expect(result).toEqual(test.description);
+        }),
+      );
+    });
+
+    it('Should throw 404 if name is not an exact match or does not exist', async () => {
+      const testCases = ['charizar', 'ulbasaur', 'madeupachoo'];
+
+      await Promise.all(
+        testCases.map(async test => {
+          await expect(
+            service.getPokemonDescriptionByName(test),
+          ).rejects.toEqual(new Error('Request failed with status code 404'));
         }),
       );
     });
@@ -131,7 +167,7 @@ class PokedexMock {
         return data[2];
       }
       default:
-        throw new Error('404 Not found');
+        throw new Error('Request failed with status code 404');
     }
   }
 }

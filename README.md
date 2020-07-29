@@ -6,3 +6,4 @@
 - Add flag to run tests against real apis
 - hard code flavour text version for now, later on select from ui
 - add tests to handle api error codes, not found etc.
+- decide where to handle error codes, or let bubble up?
