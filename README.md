@@ -10,3 +10,4 @@
 - Add unit tests with mocks for pokemon service, don't overtest
 - e2e tests for pokemon controller
 - Want to refactor pokemon service so it can retrieve more info about species/pokemon, more logic up to pokemon service rather than having a 'getdescription' method in the pokeapi service
+- Should aggregate all data into a neat json object with some data about the pokemon, original and translated descriptions, plus href so the browser can fetch images etc.
