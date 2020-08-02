@@ -3,53 +3,21 @@ import { PokemonService } from './pokemon.service';
 import { PokeApiService } from '../poke-api/poke-api.service';
 import { ShakespeareTranslatorService } from '../shakespeare-translator/shakespeare-translator.service';
 import { ConfigModule } from '@nestjs/config';
+import { ShakespeareTranslatorServiceMock } from '../../test/mocks/shakespeare-translator/shakespeare-translator-service.mock';
+import { PokeApiServiceMock } from '../../test/mocks/poke-api/poke-api-service.mock';
 
 describe('PokemonService', () => {
   let service: PokemonService;
 
   beforeEach(async () => {
-    const shakespeareTranslatorService = {
-      translate: async () => {
-        return {
-          success: { total: 1 },
-          contents: {
-            translated: 'thee did translate ye text',
-            text: 'Testing',
-            translation: 'testing',
-          },
-        };
-      },
-    };
-
-    const pokeApiService = {
-      getPokemon: async () => {
-        return {
-          id: 0,
-          name: 'Testasaurus',
-          species: {
-            name: 'Testasaurus',
-          },
-          sprites: {
-            front_default: 'https://images.com',
-          },
-        };
-      },
-      getSpecies: async () => {
-        return {
-          description:
-            'A strange prehistoric bird with a tedious yet essential nature.',
-        };
-      },
-    };
-
     const module: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule.forRoot({})],
       providers: [PokemonService, PokeApiService, ShakespeareTranslatorService],
     })
       .overrideProvider(ShakespeareTranslatorService)
-      .useValue(shakespeareTranslatorService)
+      .useClass(ShakespeareTranslatorServiceMock)
       .overrideProvider(PokeApiService)
-      .useValue(pokeApiService)
+      .useClass(PokeApiServiceMock)
       .compile();
 
     service = module.get<PokemonService>(PokemonService);
@@ -65,7 +33,7 @@ describe('PokemonService', () => {
       expect(result.id).toEqual(0);
       expect(result.name).toEqual('Testasaurus');
       expect(result.description.original).toEqual(
-        'A strange prehistoric bird with a tedious yet essential nature.',
+        'A strange bird with a tedious yet essential nature.',
       );
       expect(result.description.shakespeare).toEqual(
         'thee did translate ye text',

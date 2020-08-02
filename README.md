@@ -17,3 +17,4 @@
 - add comments / documentation where needed
 - better way to mock deps in pokemon.service spec? Should probably get mock api services
 - use spy instead of full mocks
+- remove keys from env, test without keys set (FUN Translations)

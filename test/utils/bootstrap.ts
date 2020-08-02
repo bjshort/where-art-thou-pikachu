@@ -1,14 +1,27 @@
 import { getConnection } from 'typeorm';
-import { TestingModule, Test } from '@nestjs/testing';
+import { TestingModule, Test, TestingModuleBuilder } from '@nestjs/testing';
 import { AppModule } from '../../src/app.module';
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
 import { StaticModuleResolver } from './staticModuleResolver';
+import { ShakespeareTranslatorService } from '../../src/shakespeare-translator/shakespeare-translator.service';
+import { ShakespeareTranslatorServiceMock } from '../mocks/shakespeare-translator/shakespeare-translator-service.mock';
 
 /* Bootraps the nest application for testing, allows injection of mock services */
-export const initTestApp = async () => {
-  const moduleFixture: TestingModule = await Test.createTestingModule({
-    imports: [AppModule],
-  }).compile();
+export const initTestApp = async (options: { mockTranslations: boolean }) => {
+  const moduleFixtureBuilder: TestingModuleBuilder = await Test.createTestingModule(
+    {
+      imports: [AppModule],
+    },
+  );
+
+  // If true, Shakespeare translator api will not be called
+  if (options.mockTranslations) {
+    moduleFixtureBuilder
+      .overrideProvider(ShakespeareTranslatorService)
+      .useValue(new ShakespeareTranslatorServiceMock());
+  }
+
+  const moduleFixture: TestingModule = await moduleFixtureBuilder.compile();
 
   const app = moduleFixture.createNestApplication();
   app.useGlobalPipes(

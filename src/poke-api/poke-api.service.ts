@@ -19,7 +19,7 @@ export class PokeApiService {
 
   async getSpecies(name: string): Promise<PokemonSpeciesDTO> {
     try {
-      const result: PokemonSpeciesSearchResultDTO = this.pokedex.getPokemonSpeciesByName(
+      const result: PokemonSpeciesSearchResultDTO = await this.pokedex.getPokemonSpeciesByName(
         name,
       );
 

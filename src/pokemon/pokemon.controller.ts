@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, HttpException } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
 import { PokemonDTO } from './pokemon.dto';
 
@@ -8,6 +8,14 @@ export class PokemonController {
 
   @Get('/:name')
   public async get(@Param('name') name: string): Promise<PokemonDTO> {
-    return this.pokemonService.get(name);
+    try {
+      return await this.pokemonService.get(name);
+    } catch (err) {
+      // Would rethink this in production but for now just rethrow
+      if (err.response && err.response.status) {
+        throw new HttpException(err.response.data, err.response.status);
+      }
+      throw err;
+    }
   }
 }
