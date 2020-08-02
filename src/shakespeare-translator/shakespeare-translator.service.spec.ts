@@ -1,10 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ShakespeareTranslatorService } from './shakespeare-translator.service';
-import { defaultMaxListeners } from 'stream';
 import { HttpModule, HttpService } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-const fs = require('fs');
-const Path = require('path');
+import { HttpServiceMock } from '../../test/mocks/shakespeare-translator/http-service.mock';
 
 describe('ShakespeareTranslatorService', () => {
   let service: ShakespeareTranslatorService;
@@ -38,27 +36,12 @@ describe('ShakespeareTranslatorService', () => {
 
       expect(translation.success.total).toEqual(1);
       expect(translation.contents.translated).toEqual(
-        '"thee did giveth mr. Tim a hearty meal,  but unfortunately what he did doth englut did maketh him kicketh the bucket."',
+        'thee did giveth mr. Tim a hearty meal,  but unfortunately what he did doth englut did maketh him kicketh the bucket.',
       );
       expect(translation.contents.text).toEqual(
-        '"You gave Mr. Tim a hearty meal, but unfortunately what he ate made him die."',
+        'You gave Mr. Tim a hearty meal, but unfortunately what he ate made him die.',
       );
       expect(translation.contents.translation).toEqual('shakespeare');
     });
   });
 });
-
-class HttpServiceMock {
-  post(path: string) {
-    const exampleTranslation = fs.readFileSync(
-      Path.join(__dirname, './example-response.json'),
-      {
-        encoding: 'utf8',
-      },
-    );
-    const data = JSON.parse(exampleTranslation);
-    const mockApiResponse = { data };
-
-    return { toPromise: async () => mockApiResponse };
-  }
-}

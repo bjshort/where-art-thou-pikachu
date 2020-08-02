@@ -11,3 +11,9 @@
 - e2e tests for pokemon controller
 - Want to refactor pokemon service so it can retrieve more info about species/pokemon, more logic up to pokemon service rather than having a 'getdescription' method in the pokeapi service
 - Should aggregate all data into a neat json object with some data about the pokemon, original and translated descriptions, plus href so the browser can fetch images etc.
+- unit test strng utils
+- feedback checklist
+- Rewrite poke-api service to use cache etc.
+- add comments / documentation where needed
+- better way to mock deps in pokemon.service spec? Should probably get mock api services
+- use spy instead of full mocks

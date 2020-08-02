@@ -1,7 +1,7 @@
-import { Injectable, HttpService, LoggerService } from '@nestjs/common';
+import { Injectable, HttpService } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AdvancedConsoleLogger } from 'typeorm';
 import { TranslationResponseDTO } from './translation-response.dto';
+import { AxiosResponse } from 'axios';
 
 @Injectable()
 export class ShakespeareTranslatorService {
@@ -16,8 +16,18 @@ export class ShakespeareTranslatorService {
     )}/translate/shakespeare.json?text=${JSON.stringify(text)}`;
 
     try {
-      const response = await this.httpService.post(url).toPromise();
-      return response.data;
+      const response: AxiosResponse<TranslationResponseDTO> = await this.httpService
+        .post<TranslationResponseDTO>(url)
+        .toPromise();
+
+      return {
+        ...response.data,
+        contents: {
+          translated: JSON.parse(response.data.contents.translated),
+          text: JSON.parse(response.data.contents.text),
+          translation: response.data.contents.translation,
+        },
+      };
     } catch (err) {
       console.error(err);
       throw err;

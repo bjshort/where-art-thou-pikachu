@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PokeApiService } from '../poke-api/poke-api.service';
 import { ShakespeareTranslatorService } from '../shakespeare-translator/shakespeare-translator.service';
+import { StringUtils } from 'src/utils/string-utils';
+import { PokemonDTO } from './pokemon.dto';
 
 @Injectable()
 export class PokemonService {
@@ -9,15 +11,22 @@ export class PokemonService {
     private readonly shakrespeareTranslatorService: ShakespeareTranslatorService,
   ) {}
 
-  async getShakespeareanDescription(name: string) {
-    const originalDescription = await this.pokeApiService.getPokemonDescriptionByName(
-      name,
-    );
+  async get(name: string): Promise<PokemonDTO> {
+    const pokemon = await this.pokeApiService.getPokemon(name);
+    const species = await this.pokeApiService.getSpecies(pokemon.species.name);
 
     const shakespeareanDescription = await this.shakrespeareTranslatorService.translate(
-      originalDescription,
+      species.description,
     );
 
-    return shakespeareanDescription;
+    return {
+      id: pokemon.id,
+      name: pokemon.name,
+      description: {
+        original: species.description,
+        shakespeare: shakespeareanDescription.contents.translated,
+      },
+      imageUrl: pokemon.sprites.front_default,
+    };
   }
 }
