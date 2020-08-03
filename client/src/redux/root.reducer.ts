@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import searchReducer from './search/search.reducer';
+import entitiesReducer from './entities/entities.reducer';
 
 const appReducer = () => {
   return combineReducers({
     search: searchReducer,
+    entities: entitiesReducer,
   });
 };
 

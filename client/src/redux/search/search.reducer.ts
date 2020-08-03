@@ -1,7 +1,13 @@
-import { SearchActions, UPDATE_QUERY } from './search.actions';
+import {
+  SearchActions,
+  UPDATE_QUERY,
+  FETCH_POKEMON_SUCCESS,
+} from './search.actions';
+import { merge } from 'lodash';
 
 export interface SearchState {
   query: string;
+  result?: number;
 }
 
 const initalState: SearchState = {
@@ -13,6 +19,9 @@ export default (
   action: SearchActions,
 ): SearchState => {
   switch (action.type) {
+    case FETCH_POKEMON_SUCCESS: {
+      return merge(state, { result: action.payload });
+    }
     case UPDATE_QUERY: {
       return {
         ...state,
