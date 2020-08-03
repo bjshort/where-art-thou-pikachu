@@ -6,4 +6,6 @@ export interface PokemonSearchResultDTO {
     front_default: string;
     back_default: string;
   };
+  height: number;
+  weight: number;
 }

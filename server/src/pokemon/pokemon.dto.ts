@@ -6,4 +6,6 @@ export interface PokemonDTO {
     shakespeare: string;
   };
   imageUrl: string;
+  height: string;
+  weight: string;
 }

@@ -82,3 +82,39 @@ export const Header2 = styled.h2`
   letter-spacing: 0.006em;
   margin-bottom: 1rem;
 `;
+
+export const Header3 = styled.h3`
+  color: ${(props) => (props.color ? props.color : props.theme.colors.body)};
+  font-family: ${(props) => props.theme.typography.face.primary};
+  font-size: 1.25em;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.8;
+  letter-spacing: 0.006em;
+  margin-bottom: 1rem;
+`;
+
+export const Header4 = styled.h4`
+  color: ${(props) => (props.color ? props.color : props.theme.colors.body)};
+  font-family: ${(props) => props.theme.typography.face.secondary};
+  font-size: 1em;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.013em;
+  margin-bottom: 1rem;
+`;
+
+export const Header5 = styled.h5`
+  color: ${(props) => (props.color ? props.color : props.theme.colors.body)};
+  font-family: ${(props) => props.theme.typography.face.secondary};
+  font-size: 0.875em;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.013em;
+  margin-bottom: 1rem;
+`;

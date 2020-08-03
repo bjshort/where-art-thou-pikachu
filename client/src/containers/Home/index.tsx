@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchContainer from '../Search';
+import SearchContainer from '../Search/';
 
 const Wrapper = styled.div`
   background-color: #cae8dc;
