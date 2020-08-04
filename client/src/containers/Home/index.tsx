@@ -21,6 +21,7 @@ const FavouritesWrapper = styled.div`
   @media screen and (min-width: ${getBreakpoint('lg')}) {
     margin-left: 100px;
     max-width: 300px;
+    min-width: 300px;
   }
 `;
 
