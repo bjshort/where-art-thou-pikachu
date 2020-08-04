@@ -8,6 +8,7 @@ describe('ShakespeareTranslatorService', () => {
   let service: ShakespeareTranslatorService;
 
   beforeEach(async () => {
+    // Mock the HTTP module to simple a real API response
     const module: TestingModule = await Test.createTestingModule({
       imports: [HttpModule, ConfigModule.forRoot({})],
       providers: [ShakespeareTranslatorService],

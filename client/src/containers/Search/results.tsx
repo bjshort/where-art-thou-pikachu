@@ -26,6 +26,8 @@ const ResultCard = styled.div`
 
 const SearchResultsContainer = () => {
   const dispatch = useDispatch();
+
+  // Data from store
   const isSearching = useSelector(getIsSearching);
   const errorMessage = useSelector(getErrorMessage);
   const pokemonId = useSelector(getResult);

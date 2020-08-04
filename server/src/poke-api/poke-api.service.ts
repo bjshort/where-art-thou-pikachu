@@ -8,10 +8,24 @@ import { PokemonSpeciesDTO } from './dto/pokemon-species.dto';
 export class PokeApiService {
   constructor(@Inject('POKEDEX') private readonly pokedex: any) {}
 
+  /**
+   * Uses the PokeApi to look up a Pokemon by name
+   *
+   * @param {string} name
+   * @returns {Promise<PokemonSearchResultDTO>}
+   * @memberof PokeApiService
+   */
   async getPokemon(name: string): Promise<PokemonSearchResultDTO> {
     return this.pokedex.getPokemonByName(name);
   }
 
+  /**
+   * Uses the PokeApi to lookup a Pokemon species by species name (usually the same as the Pokemon name).
+   *
+   * @param {string} name
+   * @returns {Promise<PokemonSpeciesDTO>}
+   * @memberof PokeApiService
+   */
   async getSpecies(name: string): Promise<PokemonSpeciesDTO> {
     const result: PokemonSpeciesSearchResultDTO = await this.pokedex.getPokemonSpeciesByName(
       name,
@@ -31,6 +45,12 @@ export class PokeApiService {
     };
   }
 
+  /**
+   * Returns a list of all avalable Pokemon versions from the PokeAPI
+   *
+   * @returns {Promise<any>}
+   * @memberof PokeApiService
+   */
   async getVersions(): Promise<any> {
     try {
       return this.pokedex.getVersionsList();

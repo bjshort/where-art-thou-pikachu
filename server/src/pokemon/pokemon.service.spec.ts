@@ -10,6 +10,7 @@ describe('PokemonService', () => {
   let service: PokemonService;
 
   beforeEach(async () => {
+    // Provide mock implementations for service dependencies
     const module: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule.forRoot({})],
       providers: [PokemonService, PokeApiService, ShakespeareTranslatorService],

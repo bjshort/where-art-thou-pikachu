@@ -11,6 +11,13 @@ export class PokemonService {
     private readonly shakrespeareTranslatorService: ShakespeareTranslatorService,
   ) {}
 
+  /**
+   * Gets a pokemon by name
+   *
+   * @param {string} name
+   * @returns {Promise<PokemonDTO>}
+   * @memberof PokemonService
+   */
   async get(name: string): Promise<PokemonDTO> {
     const pokemon = await this.pokeApiService.getPokemon(name);
     const species = await this.pokeApiService.getSpecies(pokemon.species.name);

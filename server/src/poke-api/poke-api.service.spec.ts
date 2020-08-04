@@ -6,13 +6,14 @@ describe('PokeApiService', () => {
   let service: PokeApiService;
 
   beforeEach(async () => {
+    // Mock the Pokedex library becuase we don't want to do real calls
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         PokeApiService,
         {
           provide: 'POKEDEX',
           useValue: new PokedexMock(),
-          //useValue: new Pokedex(),
+          //useValue: new Pokedex(), -
         },
       ],
     }).compile();

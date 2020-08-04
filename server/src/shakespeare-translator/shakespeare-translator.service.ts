@@ -21,6 +21,13 @@ export class ShakespeareTranslatorService {
     }
   }
 
+  /**
+   * Translates given text into shakespearean
+   *
+   * @param {string} text
+   * @returns {Promise<TranslationResponseDTO>}
+   * @memberof ShakespeareTranslatorService
+   */
   async translate(text: string): Promise<TranslationResponseDTO> {
     const url = `${this.configService.get(
       'FUN_TRANSLATIONS_BASE_URL',
