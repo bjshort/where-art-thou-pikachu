@@ -14,8 +14,13 @@ import { ThemeProvider } from 'styled-components';
 import { Theme, GlobalStyle } from './theme';
 
 // Setup redux store and add persistence so we can rehydrate from local storage
-const persistConfig = {
+const rootPersistConfig = {
   key: 'root',
+  storage,
+};
+
+const favouritesPersistConfig = {
+  key: 'favourites',
   storage,
 };
 
@@ -32,8 +37,7 @@ const composeEnhancers =
     : compose;
 
 const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-const store = createStore(persistedReducer, enhancer);
+const store = createStore(rootReducer, enhancer);
 const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);

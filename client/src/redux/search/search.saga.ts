@@ -11,6 +11,7 @@ import {
 } from './search.actions';
 import SCHEMA from '../schema';
 import { syncEntitiesAndGetResults } from '../entities/entities.saga';
+import { getPokemonByName } from '../entities/entities.selectors';
 
 // ****************
 // WORKERS
@@ -18,6 +19,17 @@ import { syncEntitiesAndGetResults } from '../entities/entities.saga';
 export function* findPokemon() {
   try {
     const query: string = yield select(getQuery);
+    const pokemonFromExistingState = yield select(getPokemonByName(query));
+
+    /* 
+      Becuase the state gets persisted in localStorage, lets not make real api calls if we don't have to 
+    */
+    if (pokemonFromExistingState) {
+      yield put<SearchActions>(
+        fetchPokemonSuccess(pokemonFromExistingState.id),
+      );
+      return;
+    }
 
     const response: AxiosResponse<PokemonDTO> = yield call(
       ApiClient.search,

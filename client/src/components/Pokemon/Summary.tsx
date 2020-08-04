@@ -2,19 +2,14 @@ import React from 'react';
 import { Header4 } from '../../theme';
 import { PokemonDTO } from '../../api-client/pokemon.dto';
 import styled from 'styled-components';
+import { Theme } from '../../theme';
 
 interface PokemonSummaryProps {
   pokemon: PokemonDTO;
 }
 
-const ResultCard = styled.div`
-  background-color: #fb8c4b;
-  padding: 20px;
-  border-radius: 15px;
-`;
-
 const PokemonSummaryWrapper = styled.div`
-  font-family: 'Press Start 2P', cursive;
+  font-family: ${Theme.typography.face.secondary};
   background-color: #000000;
   padding: 5px;
   border: 2px solid #fff;
@@ -60,7 +55,7 @@ const PokemonNumber = styled.p`
 `;
 
 const Seperator = styled.hr`
-  border: 2px solid #fb8c4b;
+  border: 2px solid ${Theme.colors.orange};
 `;
 
 const PokemonSummary: React.FC<PokemonSummaryProps> = ({ pokemon }) => {

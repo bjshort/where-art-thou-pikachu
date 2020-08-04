@@ -3,24 +3,14 @@ import reset from 'styled-reset';
 export const Theme = {
   colors: {
     body: '#333333',
-    body2: '#666666',
-    primaryBrand: '#0072df',
-    secondaryBrand: '#003594',
-    tertiaryBrand: '#00abf1',
+    green: '#cae8dc',
+    orange: '#fb8c4b',
     placeholder: '#aaaaaa',
-    disabled: '#cccccc',
-    inactive: '#dfe4ed',
-    positive: '#5fce06',
-    negative: '#f03838',
-    warning: '#fa7200',
-    bgAccent: '#f5f7fb',
-    dividerLight: '#eeeeee',
-    dividerDark: '#dddddd',
   },
   typography: {
     face: {
       primary: `"Poppins", "Helvetica Neue", sans-serif`,
-      secondary: `"SourceSansPro", sans-serif`,
+      secondary: `'Press Start 2P', cursive`,
     },
   },
 };
@@ -48,6 +38,8 @@ export const GlobalStyle = createGlobalStyle`
     background: #f5f7fb;
     font-size: 16px;
     font-family: ${Theme.typography.face.primary};
+    background-color: ${Theme.colors.green};
+    padding: 20px;
 
     @media screen and (max-width: ${getBreakpoint('md')}) {
       font-size: 14px;
