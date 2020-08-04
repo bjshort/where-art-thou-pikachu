@@ -1,4 +1,4 @@
-import { Injectable, HttpService, Inject } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { PokemonSearchResultDTO } from './dto/pokemon-search-result.dto';
 import { PokemonSpeciesSearchResultDTO } from './dto/pokemon-species-search-result.dto';
 import { StringUtils } from '../utils/string-utils';
