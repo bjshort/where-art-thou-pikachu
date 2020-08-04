@@ -44,19 +44,4 @@ export class PokeApiService {
       description,
     };
   }
-
-  /**
-   * Returns a list of all avalable Pokemon versions from the PokeAPI
-   *
-   * @returns {Promise<any>}
-   * @memberof PokeApiService
-   */
-  async getVersions(): Promise<any> {
-    try {
-      return this.pokedex.getVersionsList();
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
-  }
 }
