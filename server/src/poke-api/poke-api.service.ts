@@ -17,7 +17,7 @@ export class PokeApiService {
       name,
     );
 
-    // TODO: Refactor to allow specification of pokemon version e.g. ruby
+    // TODO: Allow specification of pokemon version e.g. ruby
     const entry = result.flavor_text_entries.find(entry => {
       return entry.language.name === 'en';
     });
