@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavouritesList should render 1`] = `
+Array [
+  .c0 {
+  color: #333333;
+  font-family: "Poppins","Helvetica Neue",sans-serif;
+  font-size: 2.25em;
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  -webkit-letter-spacing: 0.006em;
+  -moz-letter-spacing: 0.006em;
+  -ms-letter-spacing: 0.006em;
+  letter-spacing: 0.006em;
+  margin-bottom: 1rem;
+}
+
+.c1 {
+  font-family: 'Press Start 2P',cursive;
+  background-color: #000000;
+  padding: 5px;
+  border: 2px solid #fff;
+  color: #ffffff;
+  margin-bottom: 7px;
+}
+
+.c3 {
+  background-color: #ffffff;
+  width: 100px;
+}
+
+.c5 {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 15px;
+}
+
+.c6 {
+  text-transform: uppercase;
+  color: #ffffff;
+  display: block;
+  font-size: 12px;
+  line-height: 25px;
+}
+
+.c8 {
+  display: block;
+  font-size: 12px;
+  line-height: 25px;
+  -webkit-letter-spacing: 0.4em;
+  -moz-letter-spacing: 0.4em;
+  -ms-letter-spacing: 0.4em;
+  letter-spacing: 0.4em;
+}
+
+.c2 {
+  display: inline-block;
+}
+
+.c4 {
+  display: block;
+  font-size: 11px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.c7 {
+  border: 2px solid #fb8c4b;
+}
+
+<div>
+    <h2
+      className="c0"
+    >
+      Your favourites
+    </h2>
+    <ul
+      className=""
+    >
+      <li
+        className=""
+      >
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+          >
+            <img
+              alt="psyduck"
+              className="c3"
+              src="https://com.image.png"
+            />
+            <p
+              className="c4"
+            >
+              No. 
+              54
+            </p>
+          </div>
+          <div
+            className="c5"
+          >
+            <p
+              className="c6"
+            >
+              psyduck
+            </p>
+            <p
+              className="c6"
+            >
+              HT 
+              2.62
+            </p>
+            <p
+              className="c6"
+            >
+              WT 
+              43.21
+              lb
+            </p>
+            <p
+              className="c6"
+            >
+              EXP 
+              64
+            </p>
+          </div>
+          <hr
+            className="c7"
+          />
+          <p
+            className="c8"
+          >
+            Quack
+          </p>
+        </div>
+      </li>
+      <li
+        className=""
+      >
+        <div
+          className="c1"
+        >
+          <div
+            className="c2"
+          >
+            <img
+              alt="snorlax"
+              className="c3"
+              src="https://com.image.png"
+            />
+            <p
+              className="c4"
+            >
+              No. 
+              143
+            </p>
+          </div>
+          <div
+            className="c5"
+          >
+            <p
+              className="c6"
+            >
+              snorlax
+            </p>
+            <p
+              className="c6"
+            >
+              HT 
+              6.89
+            </p>
+            <p
+              className="c6"
+            >
+              WT 
+              1014.11
+              lb
+            </p>
+            <p
+              className="c6"
+            >
+              EXP 
+              189
+            </p>
+          </div>
+          <hr
+            className="c7"
+          />
+          <p
+            className="c8"
+          >
+            zzz
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>,
+  " ",
+]
+`;

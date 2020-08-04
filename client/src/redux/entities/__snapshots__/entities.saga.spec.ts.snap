@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`entities Sagas syncEntitiesAndGetResults should dispatch correct actions and return a list of ids 1`] = `
+Array [
+  Object {
+    "payload": Object {
+      "pokemon": Object {
+        "143": Object {
+          "description": Object {
+            "original": "Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.",
+            "shakespeare": "Very distemperate. Just engluts and sleeps. As its rotund bulk builds,  't becomes steadily moo slothful.",
+          },
+          "exp": 189,
+          "height": "6.89",
+          "id": 143,
+          "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png",
+          "name": "snorlax",
+          "weight": "1014.11",
+        },
+      },
+    },
+    "type": "ENTITIES/UPDATE_ENTITIES",
+  },
+]
+`;

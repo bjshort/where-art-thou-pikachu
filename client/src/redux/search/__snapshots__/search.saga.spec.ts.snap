@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Sagas findPokemon Gets pokemon from store by name (case insensitive) 1`] = `
+Array [
+  Object {
+    "payload": 1234,
+    "type": "SEARCH/FETCH_POKEMON_SUCCESS",
+  },
+]
+`;
