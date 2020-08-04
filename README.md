@@ -10,11 +10,9 @@ This app is a multi-container Docker application. Please ensure [Docker Compose]
 
 `docker-compose up`
 
-This will spin up both the client and server applications on seperate containers.
+If this is your first time running the app, this will take a few minutes as Docker builds the containers :tea: :coffee:.
 
-If this is your first time running the app, this will take a few minutes :tea: :coffee:.
-
-Once everything is ready the application will be running at [http://localhost:4000](http://localhost:4000)
+Once everything is ready the app will be running at [http://localhost:4000](http://localhost:4000).
 
 ## Configuration
 
