@@ -1,5 +1,5 @@
 {
-  "name": "pokemon-shakespeare",
+  "name": "pokemon-shakespeare-server",
   "version": "0.0.1",
   "description": "",
   "author": "Brendan Short",
@@ -34,7 +34,6 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/swagger": "^4.5.12",
-    "@nestjs/typeorm": "^7.1.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
     "pg": "^8.3.0",

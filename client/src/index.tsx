@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistStore } from 'redux-persist';
 import rootReducer from './redux/root.reducer';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -12,17 +11,6 @@ import createSagaMiddleware from '@redux-saga/core';
 import rootSaga from './redux/root.saga';
 import { ThemeProvider } from 'styled-components';
 import { Theme, GlobalStyle } from './theme';
-
-// Setup redux store and add persistence so we can rehydrate from local storage
-const rootPersistConfig = {
-  key: 'root',
-  storage,
-};
-
-const favouritesPersistConfig = {
-  key: 'favourites',
-  storage,
-};
 
 // Create Saga middleware
 const sagaMiddleware = createSagaMiddleware();

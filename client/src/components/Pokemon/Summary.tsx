@@ -1,5 +1,4 @@
 import React from 'react';
-import { Header4 } from '../../theme';
 import { PokemonDTO } from '../../api-client/pokemon.dto';
 import styled from 'styled-components';
 import { Theme } from '../../theme';

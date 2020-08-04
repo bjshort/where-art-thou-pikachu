@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PokemonDTO } from '../../api-client/pokemon.dto';
-import { addToFavourites } from '../../redux/favourites/favourites.actions';
 
 interface PokemonActionsProps {
   pokemon: PokemonDTO;
