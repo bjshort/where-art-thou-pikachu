@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   getResult,
   getShowShakespeareanTranslation,
+  getIsSearching,
 } from '../../redux/search/search.selectors';
 import { getPokemonById } from '../../redux/entities/entities.selectors';
 import { Header3, Theme } from '../../theme';
@@ -23,6 +24,7 @@ const ResultCard = styled.div`
 
 const SearchResultsContainer = () => {
   const dispatch = useDispatch();
+  const isSearching = useSelector(getIsSearching);
   const pokemonId = useSelector(getResult);
   const pokemon = useSelector(getPokemonById(pokemonId));
   const showShakespeareanDescription = useSelector(
@@ -34,6 +36,7 @@ const SearchResultsContainer = () => {
   const AddPokemonToFavourites = (id) => dispatch(addToFavourites(id));
   const RemoveFromFavourites = (id) => dispatch(removeFromFavourites(id));
 
+  if (isSearching) return <p>Searching...</p>;
   if (!pokemon) return <p>No pokemon found.</p>;
 
   return (

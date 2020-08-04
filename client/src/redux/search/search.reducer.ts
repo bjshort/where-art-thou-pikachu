@@ -3,6 +3,8 @@ import {
   UPDATE_QUERY,
   FETCH_POKEMON_SUCCESS,
   TOGGLE_TRANSLATION,
+  FETCH_POKEMON_REQUESTED,
+  FETCH_POKEMON_FAILED,
 } from './search.actions';
 
 export interface SearchState {
@@ -10,11 +12,13 @@ export interface SearchState {
   result?: number;
 
   showShakespeareanTranslation: boolean;
+  isSearching: boolean;
 }
 
 const initalState: SearchState = {
   query: '',
   showShakespeareanTranslation: true,
+  isSearching: false,
 };
 
 export default (
@@ -22,11 +26,26 @@ export default (
   action: SearchActions,
 ): SearchState => {
   switch (action.type) {
+    case FETCH_POKEMON_REQUESTED: {
+      return {
+        ...state,
+        result: undefined,
+        isSearching: true,
+      };
+    }
+    case FETCH_POKEMON_FAILED: {
+      return {
+        ...state,
+        result: undefined,
+        isSearching: false,
+      };
+    }
     case FETCH_POKEMON_SUCCESS: {
       return {
         ...state,
         result: +action.payload,
         showShakespeareanTranslation: true,
+        isSearching: false,
       };
     }
     case UPDATE_QUERY: {
