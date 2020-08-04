@@ -11,11 +11,23 @@ export class PokemonController {
     try {
       return await this.pokemonService.get(name);
     } catch (err) {
-      // Would rethink this in production but for now just rethrow
-      if (err.response && err.response.status) {
-        throw new HttpException(err.response.data, err.response.status);
-      }
-      throw err;
+      this.handleErrors(err);
     }
+  }
+
+  private handleErrors(err) {
+    if (err.response && err.response.status) {
+      switch (err.response.status) {
+        case 429:
+          throw new HttpException(
+            `Exceeded Translation API request limit. Please mock if possible or add FUN_TRANSLATIONS_API_KEY to './server/.env. Original error: "${err.response.data.error.message}"`,
+            err.response.status,
+          );
+        default:
+          throw new HttpException(err.response.data, err.response.status);
+      }
+    }
+
+    throw err;
   }
 }

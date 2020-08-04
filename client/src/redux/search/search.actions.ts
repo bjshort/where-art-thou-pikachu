@@ -25,7 +25,7 @@ export function fetchPokemonFailed(error: string) {
   } as const;
 }
 
-export function fetchPokemonSuccess(id: string) {
+export function fetchPokemonSuccess(id?: number) {
   return {
     type: FETCH_POKEMON_SUCCESS,
     payload: id,

@@ -36,15 +36,25 @@ export function* findPokemon() {
       query,
     );
 
-    const id: string = yield syncEntitiesAndGetResults(
+    const id: number = yield syncEntitiesAndGetResults(
       response,
       SCHEMA.pokemon,
     );
 
     yield put<SearchActions>(fetchPokemonSuccess(id));
   } catch (err) {
-    console.error(err);
-    yield put<SearchActions>(fetchPokemonFailed(err));
+    console.log(err);
+    console.error(err.response.status);
+
+    // Server returns 404 when no pokemon is found, which is not an error
+    if (err.response.status === 404) {
+      yield put<SearchActions>(fetchPokemonSuccess(undefined));
+      return;
+    }
+
+    yield put<SearchActions>(
+      fetchPokemonFailed(err.response.data.message || err.message),
+    );
   }
 }
 

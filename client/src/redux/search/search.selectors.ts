@@ -8,3 +8,5 @@ export const getShowShakespeareanTranslation = (state: AppState) =>
   state.search.showShakespeareanTranslation;
 
 export const getIsSearching = (state: AppState) => state.search.isSearching;
+
+export const getErrorMessage = (state: AppState) => state.search.errorMessage;

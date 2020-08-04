@@ -28,21 +28,12 @@ export class ShakespeareTranslatorService {
       'FUN_TRANSLATIONS_BASE_URL',
     )}/translate/shakespeare.json?text=${encodeURIComponent(text)}`;
 
-    try {
-      const response: AxiosResponse<TranslationResponseDTO> = await this.httpService
-        .post<TranslationResponseDTO>(url, null, {
-          headers: this.headers,
-        })
-        .toPromise();
+    const response: AxiosResponse<TranslationResponseDTO> = await this.httpService
+      .post<TranslationResponseDTO>(url, null, {
+        headers: this.headers,
+      })
+      .toPromise();
 
-      return response.data;
-    } catch (err) {
-      if (err.response && err.response.status == 429) {
-        throw new Error(
-          `Exceeded Translation API request limit. Please mock if possible. "${err.response.data.error.message}"`,
-        );
-      }
-      throw err;
-    }
+    return response.data;
   }
 }

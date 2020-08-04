@@ -13,6 +13,7 @@ export interface SearchState {
 
   showShakespeareanTranslation: boolean;
   isSearching: boolean;
+  errorMessage?: string;
 }
 
 const initalState: SearchState = {
@@ -31,6 +32,7 @@ export default (
         ...state,
         result: undefined,
         isSearching: true,
+        errorMessage: undefined,
       };
     }
     case FETCH_POKEMON_FAILED: {
@@ -38,14 +40,16 @@ export default (
         ...state,
         result: undefined,
         isSearching: false,
+        errorMessage: action.payload,
       };
     }
     case FETCH_POKEMON_SUCCESS: {
       return {
         ...state,
-        result: +action.payload,
+        result: action.payload,
         showShakespeareanTranslation: true,
         isSearching: false,
+        errorMessage: undefined,
       };
     }
     case UPDATE_QUERY: {

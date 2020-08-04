@@ -4,6 +4,7 @@ import {
   getResult,
   getShowShakespeareanTranslation,
   getIsSearching,
+  getErrorMessage,
 } from '../../redux/search/search.selectors';
 import { getPokemonById } from '../../redux/entities/entities.selectors';
 import { Header3, Theme } from '../../theme';
@@ -15,6 +16,7 @@ import {
   removeFromFavourites,
 } from '../../redux/favourites/favourites.actions';
 import { toggleTranslation } from '../../redux/search/search.actions';
+import DisplayError from '../../components/Error';
 
 const ResultCard = styled.div`
   background-color: ${Theme.colors.orange};
@@ -25,6 +27,7 @@ const ResultCard = styled.div`
 const SearchResultsContainer = () => {
   const dispatch = useDispatch();
   const isSearching = useSelector(getIsSearching);
+  const errorMessage = useSelector(getErrorMessage);
   const pokemonId = useSelector(getResult);
   const pokemon = useSelector(getPokemonById(pokemonId));
   const showShakespeareanDescription = useSelector(
@@ -37,6 +40,7 @@ const SearchResultsContainer = () => {
   const RemoveFromFavourites = (id) => dispatch(removeFromFavourites(id));
 
   if (isSearching) return <p>Searching...</p>;
+  if (errorMessage) return <DisplayError message={errorMessage} />;
   if (!pokemon) return <p>No pokemon found.</p>;
 
   return (
