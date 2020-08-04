@@ -7,6 +7,7 @@ interface PokemonActionsProps {
   pokemon: PokemonDTO;
   addToFavourites: (id: number) => void;
   removeFromFavourites: (id: number) => void;
+  toggleTranslation: () => void;
 }
 
 const ActionsList = styled.ul`
@@ -34,11 +35,12 @@ const Action = styled.li`
 const PokemonActions: React.FC<PokemonActionsProps> = ({
   pokemon,
   addToFavourites,
+  toggleTranslation,
 }) => {
   return (
     <ActionsList>
       <Action onClick={() => addToFavourites(pokemon.id)}>Favourite</Action>
-      <Action>Toggle Desc.</Action>
+      <Action onClick={() => toggleTranslation()}>Toggle Desc.</Action>
     </ActionsList>
   );
 };

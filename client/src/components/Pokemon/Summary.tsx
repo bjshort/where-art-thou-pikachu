@@ -6,6 +6,7 @@ import { Theme } from '../../theme';
 
 interface PokemonSummaryProps {
   pokemon: PokemonDTO;
+  shakespeareanDescription?: boolean;
 }
 
 const PokemonSummaryWrapper = styled.div`
@@ -58,7 +59,10 @@ const Seperator = styled.hr`
   border: 2px solid ${Theme.colors.orange};
 `;
 
-const PokemonSummary: React.FC<PokemonSummaryProps> = ({ pokemon }) => {
+const PokemonSummary: React.FC<PokemonSummaryProps> = ({
+  pokemon,
+  shakespeareanDescription,
+}) => {
   const { id, name, imageUrl, description, height, weight } = pokemon;
   return (
     <PokemonSummaryWrapper>
@@ -73,7 +77,11 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({ pokemon }) => {
         <HeaderText>WT {weight}lb</HeaderText>
       </Header>
       <Seperator />
-      <PokemonDescription>{description.shakespeare}</PokemonDescription>
+      <PokemonDescription>
+        {shakespeareanDescription !== false
+          ? description.shakespeare
+          : description.original}
+      </PokemonDescription>
     </PokemonSummaryWrapper>
   );
 };
