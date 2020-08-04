@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PokeApiService } from '../poke-api/poke-api.service';
 import { ShakespeareTranslatorService } from '../shakespeare-translator/shakespeare-translator.service';
 import { StringUtils } from 'src/utils/string-utils';
-import { PokemonDTO } from './pokemon.dto';
+import { PokemonDTO } from './dto/pokemon.dto';
 
 @Injectable()
 export class PokemonService {
