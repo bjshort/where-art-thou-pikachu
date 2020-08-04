@@ -17,6 +17,8 @@ services:
     command: npm run start:dev
     env_file:
       - ./server/.env
+    environment:
+      FUN_TRANSLATIONS_API_KEY: ${FUN_TRANSLATIONS_API_KEY}
   client:
     container_name: client
     build:
