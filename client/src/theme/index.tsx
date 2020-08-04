@@ -18,7 +18,8 @@ export const Theme = {
 const breakpoints: { [key: string]: number } = {
   sm: 576,
   md: 768,
-  lg: 1200,
+  lg: 992,
+  xl: 1200,
 };
 
 export const getBreakpoint = (breakpoint: string): string => {
