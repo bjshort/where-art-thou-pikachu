@@ -8,4 +8,5 @@ export interface PokemonDTO {
   imageUrl: string;
   height: string;
   weight: string;
+  exp: number;
 }

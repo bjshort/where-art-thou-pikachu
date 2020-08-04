@@ -35,6 +35,9 @@ describe('PokemonController (e2e)', () => {
             },
             imageUrl:
               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png',
+            height: '5.58',
+            weight: '199.51',
+            exp: 240,
           });
         });
     });
@@ -55,6 +58,9 @@ describe('PokemonController (e2e)', () => {
             },
             imageUrl:
               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+            height: '1.31',
+            weight: '13.23',
+            exp: 112,
           });
         });
     });
@@ -75,6 +81,9 @@ describe('PokemonController (e2e)', () => {
             },
             imageUrl:
               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
+            height: '2.30',
+            weight: '15.21',
+            exp: 64,
           });
         });
     });
@@ -95,6 +104,9 @@ describe('PokemonController (e2e)', () => {
             },
             imageUrl:
               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/653.png',
+            height: '1.31',
+            weight: '20.72',
+            exp: 61,
           });
         });
     });
@@ -115,6 +127,9 @@ describe('PokemonController (e2e)', () => {
             },
             imageUrl:
               'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/358.png',
+            height: '1.97',
+            weight: '2.20',
+            exp: 159,
           });
         });
     });
@@ -123,6 +138,17 @@ describe('PokemonController (e2e)', () => {
       return request(app.getHttpServer())
         .get(`/pokemon/nope`)
         .expect(404);
+    });
+
+    it('Returns 400 if name has illegal characters', () => {
+      const tests = ['pikachu!!!', 'p$£kachu', 'pikach@', '__'];
+      return Promise.all(
+        tests.map(async test => {
+          return request(app.getHttpServer())
+            .get(`/pokemon/${test}`)
+            .expect(400);
+        }),
+      );
     });
   });
 });

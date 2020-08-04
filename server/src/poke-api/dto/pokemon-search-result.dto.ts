@@ -8,4 +8,6 @@ export interface PokemonSearchResultDTO {
   };
   height: number;
   weight: number;
+
+  base_experience: number;
 }

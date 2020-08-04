@@ -14,8 +14,6 @@ export class ShakespeareTranslatorService {
   ) {
     const apiKey = this.configService.get('FUN_TRANSLATIONS_API_KEY');
 
-    console.log('Api key inconstrucotr: ', apiKey);
-
     if (apiKey) {
       this.headers = {
         'X-Funtranslations-Api-Secret': apiKey,

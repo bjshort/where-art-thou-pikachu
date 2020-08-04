@@ -29,6 +29,7 @@ export class PokemonService {
       imageUrl: pokemon.sprites.front_default,
       height: (pokemon.height / 3.048).toFixed(2), // Need to move this to utility func,
       weight: (pokemon.weight / 4.536).toFixed(2), // Need to move this to utility func,
+      exp: pokemon.base_experience,
     };
   }
 }

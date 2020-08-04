@@ -62,7 +62,7 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
   pokemon,
   shakespeareanDescription,
 }) => {
-  const { id, name, imageUrl, description, height, weight } = pokemon;
+  const { id, name, imageUrl, description, height, weight, exp } = pokemon;
   return (
     <PokemonSummaryWrapper>
       <ImageWrapper>
@@ -71,9 +71,9 @@ const PokemonSummary: React.FC<PokemonSummaryProps> = ({
       </ImageWrapper>
       <Header>
         <HeaderText>{name}</HeaderText>
-        <HeaderText>Thunder</HeaderText>
         <HeaderText>HT {height}</HeaderText>
         <HeaderText>WT {weight}lb</HeaderText>
+        <HeaderText>EXP {exp}</HeaderText>
       </Header>
       <Seperator />
       <PokemonDescription>

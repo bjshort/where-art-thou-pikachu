@@ -9,36 +9,26 @@ export class PokeApiService {
   constructor(@Inject('POKEDEX') private readonly pokedex: any) {}
 
   async getPokemon(name: string): Promise<PokemonSearchResultDTO> {
-    try {
-      return this.pokedex.getPokemonByName(name);
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
+    return this.pokedex.getPokemonByName(name);
   }
 
   async getSpecies(name: string): Promise<PokemonSpeciesDTO> {
-    try {
-      const result: PokemonSpeciesSearchResultDTO = await this.pokedex.getPokemonSpeciesByName(
-        name,
-      );
+    const result: PokemonSpeciesSearchResultDTO = await this.pokedex.getPokemonSpeciesByName(
+      name,
+    );
 
-      // TODO: Refactor to allow specification of pokemon version e.g. ruby
-      const entry = result.flavor_text_entries.find(entry => {
-        return entry.language.name === 'en';
-      });
+    // TODO: Refactor to allow specification of pokemon version e.g. ruby
+    const entry = result.flavor_text_entries.find(entry => {
+      return entry.language.name === 'en';
+    });
 
-      // Remove all types of newline from string
-      const description = StringUtils.removeNewlines(entry.flavor_text);
+    // Remove all types of newline from string
+    const description = StringUtils.removeNewlines(entry.flavor_text);
 
-      return {
-        ...result,
-        description,
-      };
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
+    return {
+      ...result,
+      description,
+    };
   }
 
   async getVersions(): Promise<any> {
